@@ -11,7 +11,15 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        title = "home"
+        if NetworkMonitor.shared.isConnected {
+            print("you're connected")
+        }else  {
+            print("you're not connected")
+            let alert = UIAlertController(title: "Internet Connection", message: "No Internet Connection, please connect the Internet", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
 
 
